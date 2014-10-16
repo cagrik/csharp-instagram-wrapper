@@ -1,0 +1,43 @@
+﻿body {
+    margin: 0 auto;
+    width: 65%;
+}
+
+#main {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+ #main header {
+            height:100px;
+            width:100%;
+            color:blue;
+            }
+#b {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+#main #b .content {
+    height: auto;
+    width: 100%;
+    float: left;
+    margin: 12px 0px 12px 0px;
+}
+
+    #main #b .content .left {
+        float: left;
+        height: 550px;
+        width: 20%;
+    }
+
+    #main #b .content .right {
+        float: left;
+        height: 550px;
+        width: 80%;
+    }
+.like {
+background-color:#000000;
+}
+.liked{background-color:#ff0000;}

@@ -1,0 +1,27 @@
+﻿@model InstagramWrapper.Web.Test.Models.ProfileModel
+<label>
+    Posts: @Model.counts.media &nbsp; Followers: @Model.counts.followed_by &nbsp; Following: @Model.counts.follows
+</label>
+ @if (@Model.followstatus != null)
+ {
+     if (Model.followstatus.data.outgoing_status == "none")
+     {
+        <form action="/Instagram/Follow" method="get">
+            <button type="submit">
+                <b>Follow</b>
+            </button>
+            @Html.Hidden("UId", Model.Id)
+            @Html.Hidden("actn", "follow")
+        </form>
+     }
+     else
+     {
+        <form action="/Instagram/Follow" method="get">
+            <button type="submit">
+                <b>@Model.followstatus.data.outgoing_status</b>
+            </button>
+            @Html.Hidden("UId", Model.Id)
+            @Html.Hidden("actn", "unfollow")
+        </form>
+     }
+ }

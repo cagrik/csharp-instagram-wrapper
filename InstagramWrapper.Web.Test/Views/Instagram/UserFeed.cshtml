@@ -1,0 +1,43 @@
+﻿@model InstagramWrapper.Model.InstagramResponse
+
+
+@foreach (var item in Model.data)
+{
+    <div class="content">
+        <div class="left">
+            <img src="@item.user.profile_picture" height="40" width="40" /><br /><a href="Instagram/Profile?username=@item.user.username">@item.user.full_name</a><br />
+            @if (item.location != null)
+            {<a href="HtmlPage1.html">@item.location.name</a>}
+        </div>
+        <div class="right">
+            @{
+    if (item.type == "image")
+    {
+        <img src="@item.images.standard_resolution.url" width="510" height="510" />
+    }
+    else if (item.type == "video")
+    {
+        <video controls="controls" poster="@item.images.standard_resolution.url" height="510" width="510">
+            <source src="@item.videos.standard_resolution.url" type="video/mp4" />
+
+        </video>
+    }
+            }
+            <p>
+                Likes: @item.likes.count - Comments: @item.comments.count
+                @{
+    if (item.user_has_liked)
+    {
+        <img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/ff85a1a/images/p/glyph-heart-pop.png" class="liked" height="35" width="35" data-id="@item.id" data-f="unlike"/>
+    }
+    else
+    {
+        <img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/ff85a1a/images/p/glyph-heart-pop.png" class="like" height="35" width="35" data-id="@item.id" data-f="like" />
+    }
+}
+            </p>
+        </div>
+    </div>
+}
+@Html.HiddenFor(x => x.pagination.next_max_id)
+

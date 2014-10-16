@@ -1,0 +1,84 @@
+﻿@using InstagramWrapper;
+@model InstagramWrapper.Web.Test.Models.HomeModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram C# Wrapper</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")" />
+</head>
+<body>
+
+
+    @Html.Partial("Login")
+    @if (Model.user != null)
+    {
+
+        <div id="main">
+            <header>
+                <img src="@Model.user.user.profile_picture" height="80" width="80" /> @Model.user.user.full_name &nbsp;
+                @if (Model.user.user.counts != null)
+                {
+                    @Html.Partial("Profile", Model.profilmodel);
+                }
+            </header>
+            <div id="b">
+                @Html.Partial("UserFeed", Model.UserFeed)
+            </div>
+            <form action="/Instagram/NextPage" data-ajax="true" method="get">
+                <button id="a">Load More</button>
+            </form>
+        </div>
+    }
+    @Html.HiddenFor(x => x.pagetype)
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        function AttachLikeEvent() {
+            $('.like,.liked').click(function () {
+                var elmnt = this;
+
+                var pId = this.getAttribute('data-id');
+                var fnc = this.getAttribute('data-f');
+                var xh = new XMLHttpRequest();
+                var prms = '/?id=' + pId + '&actn=' + fnc;
+                var url = "http://localhost:51963/Instagram/Like" + prms;
+                xh.open('GET', url, true);
+                xh.onreadystatechange = function () {
+                    if (xh.readyState == 4) {
+                        var rps = xh.responseText;
+                        if (rps === "liked") { elmnt.setAttribute('class', 'liked'); elmnt.setAttribute('data-f', 'unlike'); }
+                        else if (rps === "unliked") { elmnt.setAttribute('class', 'like'); elmnt.setAttribute('data-f', 'like'); }
+
+                    }
+                }
+                xh.send(null);
+            });
+        }
+        function Follow() {
+
+        }
+        $(function () {
+            AttachLikeEvent();
+            var ajx = function () {
+                var $form = $(this);
+                var next = document.getElementById('pagination_next_max_id');
+
+                var options = {
+
+                    url: '/Instagram/NextPage?maxid=' + next.value,
+                    type: 'GET',
+                    //data: $form.serialize()
+                };
+                $.ajax(options).done(function (data) {
+                    var $target = $('#b');
+                    document.getElementById('pagination_next_max_id').remove();
+                    $target.append(data);
+                    AttachLikeEvent();
+                });
+                return false;
+            };
+            $("form[data-ajax='true']").submit(ajx);
+        });
+    </script>
+</body>
+
+</html>
