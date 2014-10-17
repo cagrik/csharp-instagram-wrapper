@@ -29,8 +29,8 @@ namespace InstagramWrapper.Web.Test.Controllers
                     InstagramAuth ia = new InstagramAuth();
                     InstaConfig ic = new InstaConfig();
                     ic.redirect_uri = "http://devkod.com/InstagramCSharpSdk";
-                    ic.client_secret = "f4a163278aa440788d7bf730e3ed7f26";
-                    ic.client_id = "c15754bbeee04a2fa03609ab4cc2e2fa";
+                    ic.client_secret = "";
+                    ic.client_id = "";
                      mdl.user = ia.GetAccessToken(code,ic);
                     
                     FormsAuthentication.SetAuthCookie(mdl.user.access_token, true);
