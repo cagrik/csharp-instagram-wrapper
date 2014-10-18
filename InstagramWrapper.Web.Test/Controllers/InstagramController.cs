@@ -16,41 +16,38 @@ namespace InstagramWrapper.Web.Test.Controllers
         //
         // GET: /Instagram/
 
-        public ActionResult Index(string code="")
+        public ActionResult Index()
         {
+            
             HomeModel mdl = new HomeModel();
+            mdl.profilmodel = new ProfileModel();
              Users usr= new Users();
             if (!Request.IsAuthenticated)
             {
 
-
+                var code = Request.QueryString["code"];
                 if (!string.IsNullOrEmpty(code))
                 {
                     InstagramAuth ia = new InstagramAuth();
                     InstaConfig ic = new InstaConfig();
-                    ic.redirect_uri = "http://devkod.com/InstagramCSharpSdk";
-                    ic.client_secret = "f4a163278aa440788d7bf730e3ed7f26";
-                    ic.client_id = "c15754bbeee04a2fa03609ab4cc2e2fa";
+                    ic.redirect_uri = "";
+                    ic.client_secret = "";
+                    ic.client_id = "";
                      mdl.user = ia.GetAccessToken(code,ic);
-                    
                     FormsAuthentication.SetAuthCookie(mdl.user.access_token, true);
-                   
-
                     mdl.UserFeed = usr.GetUserSelfFeed(mdl.user.access_token);
+                    
                 }
-
             }
             else
             {
-              
                     mdl.user = new OuthUser();
                     mdl.user.access_token = HttpContext.User.Identity.Name;
                     mdl.user.user = usr.GetUserSelf(mdl.user.access_token).data;
-                mdl.UserFeed = usr.GetUserSelfFeed(mdl.user.access_token);
+                    mdl.UserFeed = usr.GetUserSelfFeed(mdl.user.access_token);
+                    mdl.profilmodel.counts = mdl.user.user.counts;
             }
             mdl.pagetype = "home";
-            mdl.profilmodel= new ProfileModel();
-            mdl.profilmodel.counts=mdl.user.user.counts;
             return View(mdl);
         }
         public ActionResult NextPage(string maxid)
