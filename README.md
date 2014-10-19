@@ -3,6 +3,9 @@ csharp-instagram-wrapper
 [ Demo](http://devkod.com/InstagramCSharpSdk)
 # C# SDK for Instagram API
 It's C# wrapper to use Instagram API.
+To install InstagramWrapper, run the following command in the Package Manager Console
+<code>PM&gt; Install-Package InstagramWrapper</code>
+or Download Project and add reference InstagramWrapper.dll on your project.
 # Depencies
 You must add Json.net(v 6.0 or Higher) references on your project
 To install Json.NET, run the following command in the Package Manager Console
