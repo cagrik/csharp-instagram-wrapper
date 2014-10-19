@@ -8,8 +8,8 @@ To install InstagramWrapper, run the following command in the Package Manager Co
 or Download Project and add reference InstagramWrapper.dll on your project.
 # Depencies
 You must add Json.net(v 6.0 or Higher) references on your project
-To install Json.NET, run the following command in the Package Manager Console
-<pre>Install-Package Newtonsoft.Json</pre>
+To install Json.NET, run the following command in the Package Manager Console<br>
+<pre>Install-Package InstagramCSharpSDK</pre><br>
 if you've already instaled (lower than 6.0) run this. command.
 <pre>Update-Package Newtonsoft.Json</pre>
 
