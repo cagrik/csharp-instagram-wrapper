@@ -30,7 +30,7 @@ namespace InstagramWrapper.Web.Test.Controllers
                 {
                     InstagramAuth ia = new InstagramAuth();
                     InstaConfig ic = new InstaConfig();
-                    ic.redirect_uri = "";
+                    ic.redirect_uri = "http://localhost:51963/Instagram";
                     ic.client_secret = "";
                     ic.client_id = "";
                      mdl.user = ia.GetAccessToken(code,ic);
