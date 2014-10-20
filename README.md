@@ -14,7 +14,7 @@ if you've already instaled (lower than 6.0) run this. command.
 <pre>Update-Package Newtonsoft.Json</pre>
 
 # Create new Application
-Register your application on [Instagram Develpers](http://instagram.com/developer/).
+Register your application on [Instagram Developers](http://instagram.com/developer/).
 While creating your app you must provide a redirect url. During the development application you can host your application on localhost
 
 # Authentacion
@@ -32,6 +32,7 @@ For other type porjects (win form, store app or win phone) use web browser compo
 + `comments` - to create or delete comments on a user’s behalf
 + `relationships` - to follow and unfollow users on a user’s behalf
 + `likes` - to like and unlike items on a user’s behalf
+</ br>
  add scope parameter in your sign in url: scope=likes+comments
  
  # Receiving Access Token
