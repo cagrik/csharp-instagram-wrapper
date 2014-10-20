@@ -32,7 +32,9 @@ For other type porjects (win form, store app or win phone) use web browser compo
 + `comments` - to create or delete comments on a user’s behalf
 + `relationships` - to follow and unfollow users on a user’s behalf
 + `likes` - to like and unlike items on a user’s behalf
-</ br>
+
+
+<br>
  add scope parameter in your sign in url: scope=likes+comments
  
  # Receiving Access Token
