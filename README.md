@@ -33,11 +33,9 @@ For other type porjects (win form, store app or win phone) use web browser compo
 + `relationships` - to follow and unfollow users on a user’s behalf
 + `likes` - to like and unlike items on a user’s behalf
 
+<p> add scope parameter in your sign in url: scope=likes+comments</p>
 
-<br>
- add scope parameter in your sign in url: scope=likes+comments
- 
- # Receiving Access Token
+# Receiving Access Token
  After user signed in your application you'll get a code to get access token on redirect url. <pre>http://your-redirect-uri?code=CODE</pre>
  It's easy to get an access token via C# SDK.
  <pre>
