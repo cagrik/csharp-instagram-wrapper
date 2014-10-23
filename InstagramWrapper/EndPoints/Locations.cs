@@ -23,7 +23,8 @@ namespace InstagramWrapper.EndPoints
            var response = JsonConvert.DeserializeObject<LocationResponse>(result);
            return response;
        }
-       public MediaResults GetPlaceMedias(string id, string act,string max_id="1") {
+       public MediaResults GetPlaceMedias(string id, string act, string max_id = "1")
+       {
            Dictionary<string, string> parameters = new Dictionary<string, string>();
            parameters.Add("access_token", act);
            if (max_id != "1") parameters.Add("max_id",max_id);

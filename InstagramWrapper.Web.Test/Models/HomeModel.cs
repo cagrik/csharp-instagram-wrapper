@@ -17,4 +17,10 @@ namespace InstagramWrapper.Web.Test.Models
         public RelationshipResponse followstatus { get; set; }
         public string Id { get; set; }
     }
+
+    public class PlaceModel
+    {
+        public location place { get; set; }
+        public MediaResults Medias { get; set; }
+    }
 }

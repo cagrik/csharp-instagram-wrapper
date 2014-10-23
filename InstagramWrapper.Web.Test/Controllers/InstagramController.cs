@@ -52,9 +52,15 @@ namespace InstagramWrapper.Web.Test.Controllers
         }
         public ActionResult NextPage(string maxid)
         {
-            Users usr= new Users();
-            var response = usr.GetUserSelfFeed(HttpContext.User.Identity.Name,maxid);
-            return View("UserFeed",response);
+            Users usr = new Users();
+            var response = usr.GetUserSelfFeed(HttpContext.User.Identity.Name, maxid);
+            return View("UserFeed", response);
+        }
+        public ActionResult PlaceNextPage(string id, string maxid)
+        {
+            Locations l = new Locations();
+            var response = l.GetPlaceMedias(id,HttpContext.User.Identity.Name, maxid);
+            return View("PlaceFeed", response);
         }
         public ActionResult Like(string id, string actn)
         {
@@ -111,6 +117,17 @@ namespace InstagramWrapper.Web.Test.Controllers
             var s = r.PostRelationship(UId, HttpContext.User.Identity.Name, actn);
         return Redirect(Request.UrlReferrer.AbsoluteUri);
       
+        }
+
+        public ActionResult Place(string id) {
+            string act= HttpContext.User.Identity.Name;
+            Locations l = new Locations();
+            var plc = l.GetPlace(id, act).data;
+            var placeMedias = l.GetPlaceMedias(id, act);
+            PlaceModel pm = new PlaceModel();
+            pm.Medias = placeMedias;
+            pm.place = plc;
+            return View(pm);
         }
     }
 }
