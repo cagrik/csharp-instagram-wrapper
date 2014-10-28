@@ -17,8 +17,8 @@ if you've already instaled (lower than 6.0) run this. command.
 Register your application on [Instagram Developers](http://instagram.com/developer/).
 While creating your app you must provide a redirect url. During the development application you can host your application on localhost
 
-# Authentacion
-[Instagram Authentacion Document](http://instagram.com/developer/authentication/)
+# Authentication
+[Instagram Authentication Document](http://instagram.com/developer/authentication/)
 If you are developing a web application create a Sign in Link
 <pre>
 https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token<br>
